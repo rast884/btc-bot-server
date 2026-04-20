@@ -1,7 +1,7 @@
 /**
  * BTC 5M Virtual Trading Bot
  * - Работает 24/7 на сервере
- * - Авто-расписание: 09:00–00:00 МСК
+ * - Авто-расписание: 09:00–22:00 МСК
  * - Читает botOn, strategy, skipMode из Firebase
  */
 
@@ -25,9 +25,9 @@ const LOG_REF   = db.ref('btc5m/log');
 // ── CONSTANTS ─────────────────────────────────────────────────────────
 const WIN_MULT  = 0.92;
 const ROUND_MS  = 5 * 60 * 1000;
-// Расписание МСК (UTC+3): работаем 09:00–00:00
+// Расписание МСК (UTC+3): работаем 09:00–22:00
 const WORK_START_UTC = 6;  // 09:00 МСК = 06:00 UTC
-const WORK_END_UTC   = 21; // 00:00 МСК = 21:00 UTC
+const WORK_END_UTC   = 19; // 22:00 МСК = 19:00 UTC
 
 // ── STATE ─────────────────────────────────────────────────────────────
 let state = null;
@@ -59,7 +59,7 @@ function defaultState() {
 // ── SCHEDULE CHECK ────────────────────────────────────────────────────
 function isWorkingHours() {
   const hourUTC = new Date().getUTCHours();
-  // 06:00–21:00 UTC = 09:00–00:00 МСК
+  // 06:00–19:00 UTC = 09:00–22:00 МСК
   return hourUTC >= WORK_START_UTC && hourUTC < WORK_END_UTC;
 }
 
