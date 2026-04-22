@@ -1,0 +1,14 @@
+{
+  "name": "btc-5m-bot",
+  "version": "1.0.0",
+  "description": "BTC 5-minute Polymarket virtual trading bot",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0",
+    "node-fetch": "^2.7.0",
+    "ws": "^8.16.0"
+  }
+}
